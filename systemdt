@@ -1,0 +1,18 @@
+#! /bin/bash
+
+state="$1"
+service="$2"
+
+
+
+if [ $state = "iniciar" ] && [ $service = "weblogic" ] ; then
+    nohup    /u02/oracle/domains/weblogic_domain/bin/startWebLogic.sh &
+elif [ $state = "parar" ] && [ $service = "weblogic" ] ; then
+    /u02/oracle/domains/weblogic_domain/bin/stopWebLogic.sh
+fi
+
+if [ $state = "iniciar" ] && [ $service = "nodemanager" ] ; then
+     nohup    /u02/oracle/domains/weblogic_domain/bin/startNodeManager.sh &
+elif [ $state = "parar" ]  && [ $service = "nodemanager" ] ; then
+     /u02/oracle/domains/weblogic_domain/bin/stopNodeManager.sh
+fi
